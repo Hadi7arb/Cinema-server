@@ -1,10 +1,9 @@
 <?php
 require("../connection/connection.php");
 
-$query = "CREATE TABLE tickets(
-    ticket_id INT(11) AUTO_INCREMENT primary key,
-    seat_number VARCHAR(225) NOT NULL,
-    price DECIMAL(10,2) NOT NULL
+$query = "CREATE TABLE directors(
+    director_id INT(11) AUTO_INCREMENT primary key,
+    director_name VARCHAR(255) NOT NULL UNIQUE
     )";
 
 $execute = $mysqli->prepare($query);
@@ -13,4 +12,3 @@ if ($execute->execute()){
 }
 $execute->close();
 $mysqli->close();
-

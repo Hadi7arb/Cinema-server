@@ -6,7 +6,6 @@ $query = "CREATE TABLE payment_methods(
     method_name VARCHAR(255) NOT NULL,
     expiry_date DATE NOT NULL,
     card_nb VARCHAR(4) NOT NULL
-    /*FOREIGN KEY (id) REFERENCES users(id)*/
     )";
 
 $execute = $mysqli->prepare($query);
