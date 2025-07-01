@@ -1,7 +1,7 @@
 <?php
 require_once("Model.php");
 
-class Ticket extends Model{
+class directors extends Model{
 
     private int $directorId; 
     private string $directorName; 

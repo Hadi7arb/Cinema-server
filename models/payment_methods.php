@@ -1,7 +1,7 @@
 <?php
 require_once("Model.php");
 
-class seats extends Model{
+class payment_methods extends Model{
 
     private int $id; 
     private string $methodName; 
@@ -40,12 +40,12 @@ class seats extends Model{
         return $this->userId;
     }
 
-    public function setMethodName(string $seatNb){
+    public function setMethodName(string $methodName){
         $this->methodName = $methodName;
     }
 
     public function setExpiryDate(string $expiryDate){
-        $this->seatRow = $expiryDate;
+        $this->expiryDate = $expiryDate;
     }
 
     public function setCardNb(string $cardNb){
@@ -57,7 +57,7 @@ class seats extends Model{
     }
 
     public function toArray(){
-        return [$this->id, $this->methodName, $this->expiryDate, $this->cardNb, this->userId];
+        return [$this->id, $this->methodName, $this->expiryDate, $this->cardNb, $this->userId];
     }
     
 }
