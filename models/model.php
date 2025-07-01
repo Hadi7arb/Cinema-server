@@ -36,10 +36,26 @@ return $objects;
 
 }
 
+public static function create(mysqli $mysqli, array $data){
+    $keys = implode(', ', array_keys($data));
+    $placeholders = implode(', ', array_fill(0, count($data), '?'));
+    $values = array_values($data);
 
+    $sql = sprintf("INSERT INTO %s (%s) VALUES (%s)",
+        static::$table,
+        $keys,
+        $placeholders
+    );
+    $query = $mysqli->prepare($sql);
 
+    $types = str_repeat('s', count($values));
+    $query->bind_param($types, ...$values);
 
+    return $query->execute();
+}
 
 
 }
+
+    
 

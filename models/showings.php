@@ -38,7 +38,7 @@ class showings extends Model{
     }
 
     public function setAuditoriumId(int $auditoriumId){
-        $this->auditoriumId = $cardNb;
+        $this->auditoriumId = $auditoriumId;
     }
 
     public function setMovieId(int $movieId){
@@ -49,4 +49,22 @@ class showings extends Model{
         return [$this->showingId, $this->time, $this->audtoriumId, $this->movieId];
     }
     
+public static function findById(mysqli $mysqli,  int $movieId){
+    $sql = sprintf("SELECT * FROM %s WHERE movie_id = ?", 
+        static::$table);
+
+    $query = $mysqli->prepare($sql);
+
+    $query->bind_param("s", $movieId);
+    $query->execute();
+
+    $data = $query->get_result()->fetch_assoc();
+
+    if ($data) {
+        return new static($data);
+    } else {
+        return null;
+    }
+}
+
 }

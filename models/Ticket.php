@@ -45,7 +45,7 @@ class Ticket extends Model{
     }
 
     public function toArray(){
-        return [$this->id, $this->seatNb, $this->price, $this->bookingNb];
+        return [$this->id, $this->seatNb, $this->price, $this->bookingId];
     }
     
 }

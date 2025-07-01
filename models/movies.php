@@ -2,7 +2,7 @@
 require_once("model.php");
 
 
-class User extends model{
+class movies extends model{
 
 private int $id;
 private string $title;
@@ -10,6 +10,7 @@ private string $releaseDate;
 private int $duration;
 private string $ageRestriction;
 private int $directorId;
+private string $imageURL;
 
 protected static string $table = "movies";
 
@@ -20,6 +21,7 @@ public function __construct(array $data){
     $this->duration = $data["duration"];
     $this->ageRestriction = $data["age_restriction"];
     $this->directorId = $data["director_id"];
+    $this->imageURL = $data["imageURL"];
 }
 
 public function getId(): int {
@@ -45,6 +47,9 @@ public function getAgeRestriction(): string {
 public function getDirectorId(): int {
     return $this->directorId;
 }
+public function getImageURL(): string {
+    return $this->imageURL;
+}
 
 public function setTitle(string $title){
     $this->title = $title;
@@ -66,8 +71,12 @@ public function setDirectorId(int $directorId){
     $this->directorId = $directorId;
 }
 
+public function setImageURL(string $imageURL){
+    $this->imageURL = $imageURL;
+}
+
 public function toArray(){
-    return [$this->id, $this->title, $this->releaseDate, $this->duration, $this->ageRestriction, $this->directorId];
+    return [$this->id, $this->title, $this->releaseDate, $this->duration, $this->ageRestriction, $this->directorId, $this->imageURL];
 }
 
 }
